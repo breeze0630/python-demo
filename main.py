@@ -202,4 +202,51 @@ T = (1,)
 print(T)
 
 
+#python set
+# add(item) 添加
+# update() 批量添加 update([1,2])
+# remove(item) 删除 元素不存在时会报错的
+# Enter a code
+L = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+S = set([1, 3, 5, 7, 9,11])
+
+for l in L:
+    if l in S:
+        S.remove(l)
+    else:
+        S.add(l)
+print(S)
+
+# 不会报错的删除 discard()
+name_set = set(['Jenny', 'Ellena', 'Alice', 'Candy', 'David', 'Hally', 'Bob', 'Isen', 'Karl'])
+name_set.discard('Jenny')
+print(name_set) # ==> set(['Ellena', 'Alice', 'Candy', 'David', 'Hally', 'Bob', 'Isen', 'Karl'])
+name_set.discard('Jenny')
+print(name_set) # ==> set(['Ellena', 'Alice', 'Candy', 'David', 'Hally', 'Bob', 'Isen', 'Karl']
+# 清除所有元素的方法clear()
+name_set = set(['Jenny', 'Ellena', 'Alice', 'Candy', 'David', 'Hally', 'Bob', 'Isen', 'Karl'])
+print(name_set) # ==> set(['Jenny', 'Ellena', 'Alice', 'Candy', 'David', 'Hally', 'Bob', 'Isen', 'Karl'])
+name_set.clear()
+print(name_set) # ==> set([])
+
+#集合的子集和超集  issubset、issuperset
+#set提供方法判断两个set之间的关系，比如两个集合set，判断其中一个set是否为另外一个set的子集或者超集。
+s1 = set([1, 2, 3, 4, 5])
+s2 = set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+# 判断s1是否为s2的子集
+print(s1.issubset(s2)) # ==> True
+# 判断s2是否为s1的超集
+print(s2.issuperset(s1)) # ==> True
+#判断集合是否重合  isdisjoint 可以快速判断两个集合是否有重合，如果有重合，返回False，否则返回True。
+s1 = set([1, 2, 3, 4, 5])
+s2 = set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(s1.isdisjoint(s2)) # ==> False，因为有重复元素1、2、3、4、5
+
+#python 求和函数 sum()
+i = 1
+L = []
+while i<= 100:
+    L.append(i*i)
+    i+=1
+print(sum(L))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
