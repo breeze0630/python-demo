@@ -248,5 +248,78 @@ L = []
 while i<= 100:
     L.append(i*i)
     i+=1
-print(sum(L))
+# print(sum(L))
+
+#python 函数可变参数 *args 当做 tuple 使用
+def fn_1(*args):
+    print(args)
+
+fn_1('a','b','c')
+
+# 对于可变关键字参数，一般使用**kwargs来表示。Python会把可变关键字参数当作dict去处理
+def info(**kwargs):
+    print('name: {}, gender: {}, age: {}'.format(kwargs.get('name'), kwargs.get('gender'), kwargs.get('age')))
+
+info(name = 'Alice', gender = 'girl', age = 16)
+
+#对于一个拥有必需参数，默认参数，可变参数，可变关键字参数的函数，定义顺序是这样的
+def func(param1, param2, param3 = None, *args, **kwargs):
+    print(param1)
+    print(param2)
+    print(param3)
+    print(args)
+    print(kwargs)
+
+func(100, 200, 300, 400, 500, name = 'Alice', score = 100)
+
+
+def func(**args):
+    i =0
+    while i < len(args.get('name')):
+        print("names : {} gender :{} age :{}".format(args.get('name')[i],args.get('gender')[i],args.get('age')[i]))
+        i += 1
+func(name = ['hei1','hei2','hei3'] , gender = ['boy','girl','boy'] , age = [99,98,19])
+
+print("----------------- CLASS -----------------------------")
+
+
+##### Python 对象 定义  class 类名:
+class Person(object):   pass
+
+xiaohong = Person()
+xiaohong.name = 'xiaohong'
+xiaohong.sex = 'girl'
+xiaohong.age = 13
+
+print(xiaohong.name)
+print(xiaohong.sex)
+print(xiaohong.age)
+
+### 定义类的时候  添加一个特殊的__init__()方法，当创建实例时，__init__()方法被自动调用，我们就能在此为每个实例都统一加上以下属性
+##需要注意的是，__init__() 方法的第一个参数必须是 self（也可以用别的名字，但建议使用习惯用法），后续参数则可以自由指定，和定义函数没有任何区别
+##定义类后，就可以相应的实例化对象了，需要注意的是，在实例化的时候，需要提供除self以外的所有参数。
+class Person(object):
+    def __init__(self, name, sex, age):
+        self.name = name
+        self.sex = sex
+        self.age = age
+
+
+xiaoming = Person('Xiao Ming', 'boy', 13)
+print(xiaoming.sex1)
+
+###Python 类属性 是所有的实例共享
+class Animal(object):
+    count = 0
+    def __init__(this,name,age):
+        this.name = name
+        this.age = age
+        Animal.count += 1
+dog = Animal('dog',1)
+print('name : {} age :{}'.format(dog.name,dog.age))
+print(Animal.count) # ===> 1
+cat = Animal('cat',2)
+print(Animal.count) # ===> 2
+
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
